@@ -1,0 +1,11 @@
+node_modules
+.env
+logs
+package.lock.json
+package-lock.json
+yarn.lock
+*.zip
+uploads
+storage
+pnpm-lock.yaml
+docs
