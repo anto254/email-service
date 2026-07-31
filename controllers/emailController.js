@@ -6,6 +6,8 @@
 
 const asyncHandler = require('express-async-handler');
 const { sendOtpEmail } = require('../handlers/email/otpHandler');
+const { sendDepositEmail } = require('../handlers/email/depositHandler');
+const { sendWelcomeEmail } = require('../handlers/email/welcomeHandler');
 
 /**
  * @desc    Send email based on type
@@ -17,8 +19,16 @@ const sendEmail = asyncHandler(async (req, res) => {
 
   let result;
 
+  console.log("Received Request:", req.body);
+
   // Route to appropriate handler based on type
   switch (type) {
+    case 'welcome':
+      result = await handleWelcomeEmail(req.body);
+      break;
+    case 'deposit':
+      result = await handleDepositEmail(req.body);
+      break;
     case 'otp':
       result = await handleOtpEmail(req.body);
       break;
@@ -140,6 +150,29 @@ const handleOtpEmail = async (requestBody) => {
 //     };
 //   }
 // };
+
+
+const handleDepositEmail = async (requestBody) => {
+  try {
+    const { email, recipientName, amount, balance, date, maskedAccount } = requestBody;
+    const result = await sendDepositEmail(email, { recipientName, amount, balance, date, maskedAccount });
+    return result;
+  } catch (error) {
+    console.error('Deposit email controller error:', error);
+    return { success: false, error: error.message || 'Failed to process deposit email request' };
+  }
+};
+
+const handleWelcomeEmail = async (requestBody) => {
+  try {
+    const { email, recipientName, username, accountNo } = requestBody;
+    const result = await sendWelcomeEmail(email, { recipientName, username, accountNo });
+    return result;
+  } catch (error) {
+    console.error('Welcome email controller error:', error);
+    return { success: false, error: error.message || 'Failed to process welcome email request' };
+  }
+};
 
 module.exports = {
   sendEmail,

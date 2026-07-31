@@ -56,6 +56,27 @@ const validateOtpRequest = (body) => {
  * @param {string} email - Email address to validate
  * @returns {boolean} True if valid email format
  */
+const validateDepositRequest = (body) => {
+  const { type, email, recipientName, amount, balance, date, maskedAccount } = body;
+  const errors = [];
+
+  if (!type || type !== 'deposit') errors.push('Type must be "deposit"');
+  if (!email) errors.push('Email is required');
+  else if (!isValidEmail(email)) errors.push('Invalid email format');
+  if (!amount) errors.push('Amount is required');
+
+  return { isValid: errors.length === 0, errors };
+};
+
+const validateWelcomeRequest = (body) => {
+  const { type, email, recipientName, username, accountNo } = body;
+  const errors = [];
+  if (!type || type !== 'welcome') errors.push('Type must be "welcome"');
+  if (!email) errors.push('Email is required');
+  else if (!isValidEmail(email)) errors.push('Invalid email format');
+  return { isValid: errors.length === 0, errors };
+};
+
 const isValidEmail = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
@@ -83,6 +104,12 @@ const validateEmailRequest = (req, res, next) => {
   let validationResult;
 
   switch (type) {
+    case 'welcome':
+      validationResult = validateWelcomeRequest(req.body);
+      break;
+    case 'deposit':
+      validationResult = validateDepositRequest(req.body);
+      break;
     case 'otp':
       validationResult = validateOtpRequest(req.body);
       break;
@@ -112,5 +139,7 @@ const validateEmailRequest = (req, res, next) => {
 module.exports = {
   validateEmailRequest,
   validateOtpRequest,
+  validateDepositRequest,
+  validateWelcomeRequest,
   isValidEmail
 };
