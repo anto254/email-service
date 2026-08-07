@@ -8,6 +8,8 @@ const asyncHandler = require('express-async-handler');
 const { sendOtpEmail } = require('../handlers/email/otpHandler');
 const { sendDepositEmail } = require('../handlers/email/depositHandler');
 const { sendWelcomeEmail } = require('../handlers/email/welcomeHandler');
+const { sendAccountActivatedEmail } = require('../handlers/email/accountActivatedHandler');
+const { sendAccountRejectedEmail } = require('../handlers/email/accountRejectedHandler');
 
 /**
  * @desc    Send email based on type
@@ -31,6 +33,12 @@ const sendEmail = asyncHandler(async (req, res) => {
       break;
     case 'otp':
       result = await handleOtpEmail(req.body);
+      break;
+    case 'account-activated':
+      result = await handleAccountActivatedEmail(req.body);
+      break;
+    case 'account-rejected':
+      result = await handleAccountRejectedEmail(req.body);
       break;
 
     // Add more cases here for other email types
@@ -171,6 +179,28 @@ const handleWelcomeEmail = async (requestBody) => {
   } catch (error) {
     console.error('Welcome email controller error:', error);
     return { success: false, error: error.message || 'Failed to process welcome email request' };
+  }
+};
+
+const handleAccountActivatedEmail = async (requestBody) => {
+  try {
+    const { email, recipientName, username, accountNo } = requestBody;
+    const result = await sendAccountActivatedEmail(email, { recipientName, username, accountNo });
+    return result;
+  } catch (error) {
+    console.error('Account activated email controller error:', error);
+    return { success: false, error: error.message || 'Failed to process email request' };
+  }
+};
+
+const handleAccountRejectedEmail = async (requestBody) => {
+  try {
+    const { email, recipientName, reason } = requestBody;
+    const result = await sendAccountRejectedEmail(email, { recipientName, reason });
+    return result;
+  } catch (error) {
+    console.error('Account rejected email controller error:', error);
+    return { success: false, error: error.message || 'Failed to process email request' };
   }
 };
 

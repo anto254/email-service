@@ -116,5 +116,5 @@ console.log('✅ Route structure: PASSED');
 console.log('\n🎉 Email service is ready to use!');
 console.log('\nNext steps:');
 console.log('1. Start the server: npm start');
-console.log('2. Test the API: POST http://localhost:3501/api/email/send');
+console.log('2. Test the API: POST https://emailservice.emiratrustgroup.com/api/email/send');
 console.log('3. See examples/send-otp-example.js for usage examples');

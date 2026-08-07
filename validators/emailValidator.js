@@ -82,6 +82,25 @@ const isValidEmail = (email) => {
   return emailRegex.test(email);
 };
 
+const validateAccountActivatedRequest = (body) => {
+  const { type, email, recipientName } = body;
+  const errors = [];
+  if (!type || type !== 'account-activated') errors.push('Type must be "account-activated"');
+  if (!email) errors.push('Email is required');
+  else if (!isValidEmail(email)) errors.push('Invalid email format');
+  return { isValid: errors.length === 0, errors };
+};
+
+const validateAccountRejectedRequest = (body) => {
+  const { type, email, recipientName, reason } = body;
+  const errors = [];
+  if (!type || type !== 'account-rejected') errors.push('Type must be "account-rejected"');
+  if (!email) errors.push('Email is required');
+  else if (!isValidEmail(email)) errors.push('Invalid email format');
+  if (!reason) errors.push('Reason is required');
+  return { isValid: errors.length === 0, errors };
+};
+
 /**
  * Middleware to validate email requests based on type
  * @param {Object} req - Express request object
@@ -113,6 +132,12 @@ const validateEmailRequest = (req, res, next) => {
     case 'otp':
       validationResult = validateOtpRequest(req.body);
       break;
+    case 'account-activated':
+      validationResult = validateAccountActivatedRequest(req.body);
+      break;
+    case 'account-rejected':
+      validationResult = validateAccountRejectedRequest(req.body);
+      break;
     // Add more cases here for other email types
     default:
       return res.status(400).json({
@@ -141,5 +166,7 @@ module.exports = {
   validateOtpRequest,
   validateDepositRequest,
   validateWelcomeRequest,
+  validateAccountActivatedRequest,
+  validateAccountRejectedRequest,
   isValidEmail
 };

@@ -19,7 +19,8 @@ const generateOtpEmail = (otpCode, options = {}) => {
   const recipientName = options.recipientName || 'User';
   const expiryMinutes = options.expiryMinutes || emailConfig.defaultOtpExpiryMinutes;
   const purpose = options.purpose || 'verify your account';
-  const { businessName, websiteUrl, contactPhone, contactEmail, brandColors } = emailConfig;
+  const { websiteUrl, contactPhone, contactEmail, brandColors } = emailConfig;
+  const businessName = "إميراترست | EmiraTrust Bank";
 
   return `
     <!DOCTYPE html>
@@ -45,7 +46,7 @@ const generateOtpEmail = (otpCode, options = {}) => {
           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .header {
-          background: linear-gradient(135deg, ${brandColors.primary} 0%, ${brandColors.secondary} 100%);
+          background: linear-gradient(135deg, #a67c00 0%, #d4a373 100%);
           color: #ffffff;
           padding: 30px 20px;
           text-align: center;

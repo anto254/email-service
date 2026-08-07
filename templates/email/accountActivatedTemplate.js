@@ -1,6 +1,6 @@
 const emailConfig = require('../../config/emailConfig');
 
-const generateWelcomeEmail = (options = {}) => {
+const generateAccountActivatedEmail = (options = {}) => {
   const recipientName = options.recipientName || 'Valued Client';
   const username = options.username || '';
   const accountNo = options.accountNo || '';
@@ -36,9 +36,9 @@ const generateWelcomeEmail = (options = {}) => {
           <h1>${businessName}</h1>
         </div>
         <div class="content">
-          <h2>Welcome to EmiraTrust Bank!</h2>
+          <h2>Account Successfully Activated!</h2>
           <p>Dear ${recipientName},</p>
-          <p>Congratulations on successfully opening your account with EmiraTrust Bank. We are thrilled to welcome you to a world of premium banking services designed for your financial growth and security.</p>
+          <p>We are pleased to inform you that your EmiraTrust Bank account has been successfully verified and activated. You now have full access to our premium banking services.</p>
 
           <div class="welcome-box">
             <p style="margin: 0; color: #6c757d; font-size: 14px;">Your Official Username</p>
@@ -52,12 +52,12 @@ const generateWelcomeEmail = (options = {}) => {
             </tr>
             <tr>
               <th>Status</th>
-              <td style="color: #ff9900;">In Review</td>
+              <td style="color: #28a745;">Active</td>
             </tr>
           </table>
 
-          <p>You can now log in to your account and start managing your finances. If you're having trouble, please contact our support team at <a href="mailto:support@emiratrustgroup.com" style="color: #a67c00;">support@emiratrustgroup.com</a> and we'll be happy to assist you.</p>
-          <p>Best regards,<br><strong>Emiratrust Bank Team</strong></p>
+          <p>You can now log in to your account to manage your finances, make transfers, and more. If you require any assistance, please contact our support team at <a href="mailto:support@emiratrustgroup.com" style="color: #a67c00;">support@emiratrustgroup.com</a>.</p>
+          <p>Best regards,<br><strong>EmiraTrust Bank Team</strong></p>
         </div>
         <div class="footer">
           <p>© ${new Date().getFullYear()} ${businessName}. All rights reserved.</p>
@@ -70,4 +70,4 @@ const generateWelcomeEmail = (options = {}) => {
   `;
 };
 
-module.exports = { generateWelcomeEmail };
+module.exports = { generateAccountActivatedEmail };

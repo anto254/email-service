@@ -48,7 +48,7 @@ npm run dev
 ### 4. Send Your First Email
 
 ```bash
-curl -X POST http://localhost:3501/api/email/send \
+curl -X POST https://emailservice.emiratrustgroup.com/api/email/send \
   -H "Content-Type: application/json" \
   -d '{
     "type": "otp",
@@ -109,11 +109,11 @@ email-service/
 
 ## 📋 API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/email/send` | Send email based on type |
-| GET | `/api/email/types` | Get supported email types |
-| GET | `/api/health` | Health check |
+| Method | Endpoint           | Description               |
+| ------ | ------------------ | ------------------------- |
+| POST   | `/api/email/send`  | Send email based on type  |
+| GET    | `/api/email/types` | Get supported email types |
+| GET    | `/api/health`      | Health check              |
 
 ## 📨 Supported Email Types
 
@@ -122,6 +122,7 @@ email-service/
 Send one-time password verification emails.
 
 **Request:**
+
 ```json
 {
   "type": "otp",
@@ -132,6 +133,7 @@ Send one-time password verification emails.
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -178,7 +180,7 @@ module.exports = { generateWelcomeEmail };
 // handlers/email/welcomeHandler.js
 const sendWelcomeEmail = async (email, userName) => {
   const html = generateWelcomeEmail(userName);
-  return await emailService.sendBrevoEmail('Welcome', email, html);
+  return await emailService.sendBrevoEmail("Welcome", email, html);
 };
 module.exports = { sendWelcomeEmail };
 ```
@@ -218,18 +220,21 @@ const handleWelcomeEmail = async (requestBody) => {
 ## 🌟 Key Benefits
 
 ### Clean Architecture
+
 - ✅ Controller-based MVC pattern
 - ✅ Clear separation of concerns
 - ✅ Single responsibility principle
 - ✅ Easy to test and maintain
 
 ### No Database
+
 - ✅ Stateless service
 - ✅ Fast startup
 - ✅ Easy deployment
 - ✅ Horizontal scaling
 
 ### Developer Experience
+
 - ✅ Well-documented code
 - ✅ Clear file organization
 - ✅ Easy to extend
@@ -245,11 +250,13 @@ const handleWelcomeEmail = async (requestBody) => {
 ## 🔍 Common Issues
 
 ### Email not sending
+
 - Check `BREVO_SMTP_KEY` in `.env`
 - Verify Brevo API is initialized (check server logs)
 - Ensure recipient email is valid
 
 ### Validation errors
+
 - Include all required fields
 - Use correct field types
 - Check email format
@@ -257,6 +264,7 @@ const handleWelcomeEmail = async (requestBody) => {
 ## 📦 Project Files
 
 ### Core Implementation
+
 - `server.js` - Express app (NO database)
 - `controllers/emailController.js` - Business logic orchestration
 - `routes/emailRoutes.js` - Clean routes
@@ -266,6 +274,7 @@ const handleWelcomeEmail = async (requestBody) => {
 - `services/emailService.js` - Brevo API integration
 
 ### Documentation
+
 - `ARCHITECTURE.md` - Architecture deep dive
 - `QUICK_START.md` - Quick reference
 - `PROJECT_STRUCTURE.md` - Directory structure
@@ -274,6 +283,7 @@ const handleWelcomeEmail = async (requestBody) => {
 - `docs/EMAIL_SERVICE_GUIDE.md` - Complete API guide
 
 ### Testing & Examples
+
 - `test-email-service.js` - Test suite
 - `examples/send-otp-example.js` - Usage examples
 - `postman-collection.json` - Postman collection
@@ -281,6 +291,7 @@ const handleWelcomeEmail = async (requestBody) => {
 ## 🤝 Contributing
 
 When adding new features:
+
 1. Follow the existing architecture pattern
 2. Create separate files for templates, handlers, and validation
 3. Update the controller, not the routes
@@ -294,17 +305,21 @@ ISC
 ## 👨‍💻 Development
 
 ### Project Structure
+
 See [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) for detailed information.
 
 ### Architecture
+
 See [ARCHITECTURE.md](ARCHITECTURE.md) for architecture documentation.
 
 ### Adding Features
+
 See [QUICK_START.md](QUICK_START.md#adding-new-email-types) for step-by-step guide.
 
 ## 🎯 Roadmap
 
 Future email types to add:
+
 - [ ] Welcome email
 - [ ] Password reset email
 - [ ] Email verification
@@ -319,4 +334,5 @@ Future email types to add:
 **Last Updated:** 2025-11-10
 
 For questions or issues, see the documentation in the `docs/` directory.
+
 # email-service
