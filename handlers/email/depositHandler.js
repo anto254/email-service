@@ -1,4 +1,5 @@
 const emailService = require('../../services/emailService');
+const emailConfig = require('../../config/emailConfig');
 const { generateDepositEmail } = require('../../templates/email/depositTemplate');
 
 const sendDepositEmail = async (email, options) => {
@@ -8,7 +9,9 @@ const sendDepositEmail = async (email, options) => {
   
   const subject = `Deposit Confirmation - $${options.amount}`;
 
-  return await emailService.sendBrevoEmail(subject, email, htmlContent);
+  return await emailService.sendBrevoEmail(subject, email, htmlContent, {
+    senderName: emailConfig.senderName || emailConfig.businessName || "EmiraTrust Bank"
+  });
 };
 
 module.exports = { sendDepositEmail };
