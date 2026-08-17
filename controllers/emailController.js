@@ -10,6 +10,7 @@ const { sendDepositEmail } = require('../handlers/email/depositHandler');
 const { sendWelcomeEmail } = require('../handlers/email/welcomeHandler');
 const { sendAccountActivatedEmail } = require('../handlers/email/accountActivatedHandler');
 const { sendAccountRejectedEmail } = require('../handlers/email/accountRejectedHandler');
+const { sendCustomMessageEmail } = require('../handlers/email/customMessageHandler');
 
 /**
  * @desc    Send email based on type
@@ -39,6 +40,9 @@ const sendEmail = asyncHandler(async (req, res) => {
       break;
     case 'account-rejected':
       result = await handleAccountRejectedEmail(req.body);
+      break;
+    case 'custom-message':
+      result = await handleCustomMessageEmail(req.body);
       break;
 
     // Add more cases here for other email types
@@ -201,6 +205,19 @@ const handleAccountRejectedEmail = async (requestBody) => {
   } catch (error) {
     console.error('Account rejected email controller error:', error);
     return { success: false, error: error.message || 'Failed to process email request' };
+  }
+};
+
+const handleCustomMessageEmail = async (requestBody) => {
+  try {
+    const { email, subject, emailBody, recipientTitle, recipientName, rmName, rmTitle, rmDepartment, rmPhone, rmEmail } = requestBody;
+    const result = await sendCustomMessageEmail(email, { 
+      subject, emailBody, recipientTitle, recipientName, rmName, rmTitle, rmDepartment, rmPhone, rmEmail 
+    });
+    return result;
+  } catch (error) {
+    console.error('Custom message email controller error:', error);
+    return { success: false, error: error.message || 'Failed to process custom message email request' };
   }
 };
 

@@ -101,6 +101,23 @@ const validateAccountRejectedRequest = (body) => {
   return { isValid: errors.length === 0, errors };
 };
 
+const validateCustomMessageRequest = (body) => {
+  const { type, email, subject, emailBody, recipientName, rmName, rmTitle, rmDepartment, rmPhone, rmEmail } = body;
+  const errors = [];
+  if (!type || type !== 'custom-message') errors.push('Type must be "custom-message"');
+  if (!email) errors.push('Email is required');
+  else if (!isValidEmail(email)) errors.push('Invalid email format');
+  if (!subject) errors.push('Subject is required');
+  if (!emailBody) errors.push('Email body is required');
+  if (!recipientName) errors.push('Recipient name is required');
+  if (!rmName) errors.push('Relationship Manager name is required');
+  if (!rmTitle) errors.push('Relationship Manager title is required');
+  if (!rmDepartment) errors.push('Relationship Manager department is required');
+  if (!rmPhone) errors.push('Relationship Manager phone is required');
+  if (!rmEmail) errors.push('Relationship Manager email is required');
+  return { isValid: errors.length === 0, errors };
+};
+
 /**
  * Middleware to validate email requests based on type
  * @param {Object} req - Express request object
@@ -138,6 +155,9 @@ const validateEmailRequest = (req, res, next) => {
     case 'account-rejected':
       validationResult = validateAccountRejectedRequest(req.body);
       break;
+    case 'custom-message':
+      validationResult = validateCustomMessageRequest(req.body);
+      break;
     // Add more cases here for other email types
     default:
       return res.status(400).json({
@@ -168,5 +188,6 @@ module.exports = {
   validateWelcomeRequest,
   validateAccountActivatedRequest,
   validateAccountRejectedRequest,
+  validateCustomMessageRequest,
   isValidEmail
 };
