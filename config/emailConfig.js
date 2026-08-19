@@ -12,6 +12,7 @@ module.exports = {
 
   // Email Settings
   senderEmail: process.env.SMTP_FROM || 'noreply@example.com',
+  senderOmar: process.env.SENDER_OMAR || 'omarramadan@emiratrustgroup.com',
   senderName: 'إميراترست | EmiraTrust Bank',
 
   // OTP Settings

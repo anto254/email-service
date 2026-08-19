@@ -36,7 +36,7 @@ class EmailService {
       }
 
       const sender = {
-        email: process.env.SMTP_FROM || process.env.SUPPORT_EMAIL || 'noreply@radientdesk.com',
+        email: options.senderEmail || process.env.SMTP_FROM || process.env.SUPPORT_EMAIL || 'noreply@radientdesk.com',
         name: options.senderName || 'Radient Desk'
       };
 

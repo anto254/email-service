@@ -210,9 +210,9 @@ const handleAccountRejectedEmail = async (requestBody) => {
 
 const handleCustomMessageEmail = async (requestBody) => {
   try {
-    const { email, subject, emailBody, recipientTitle, recipientName, rmName, rmTitle, rmDepartment, rmPhone, rmEmail } = requestBody;
+    const { email, subject, emailBody, recipientTitle, recipientName, rmName, rmTitle, rmDepartment, rmPhone, rmEmail, senderEmail } = requestBody;
     const result = await sendCustomMessageEmail(email, { 
-      subject, emailBody, recipientTitle, recipientName, rmName, rmTitle, rmDepartment, rmPhone, rmEmail 
+      subject, emailBody, recipientTitle, recipientName, rmName, rmTitle, rmDepartment, rmPhone, rmEmail, senderEmail 
     });
     return result;
   } catch (error) {

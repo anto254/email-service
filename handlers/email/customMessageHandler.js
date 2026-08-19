@@ -9,7 +9,8 @@ const sendCustomMessageEmail = async (email, options) => {
   const htmlContent = generateCustomMessageEmail(options);
   
   return await emailService.sendBrevoEmail(options.subject, email, htmlContent, {
-    senderName: options.rmName
+    senderName: options.rmName,
+    senderEmail: options.senderEmail || emailConfig.senderOmar
   });
 };
 
