@@ -22,24 +22,24 @@ const generateCustomMessageEmail = (options = {}) => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <style>
         body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f4f4; }
-        .container { max-width: 650px; margin: 30px auto; background-color: #ffffff; border-radius: 4px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
-        .header { background: #0f172a; color: #d4a373; padding: 35px 40px; text-align: left; border-bottom: 4px solid #a67c00; }
+        .container { max-width: 650px; margin: 30px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .header { background: linear-gradient(135deg, #a67c00 0%, #d4a373 100%); color: #ffffff; padding: 35px 40px; text-align: center; }
         .header h1 { margin: 0; font-size: 26px; color: #ffffff; font-weight: 500; letter-spacing: 0.5px; }
-        .header h2 { margin: 12px 0 0 0; font-size: 13px; font-weight: 600; color: #d4a373; letter-spacing: 2.5px; text-transform: uppercase; }
+        .header h2 { margin: 12px 0 0 0; font-size: 13px; font-weight: 600; color: #ffffff; letter-spacing: 2.5px; text-transform: uppercase; }
         .content { padding: 45px 40px; background-color: #ffffff; }
-        .email-body { margin-bottom: 35px; font-size: 15px; color: #334155; line-height: 1.8; }
+        .email-body { margin-bottom: 35px; font-size: 15px; color: #333; line-height: 1.8; }
         .email-body p { margin-bottom: 16px; }
         .signature { margin-top: 40px; padding-top: 25px; border-top: 1px solid #f1f5f9; }
-        .signature-name { font-weight: 600; font-size: 16px; color: #0f172a; margin-bottom: 3px; }
-        .signature-title { font-size: 14px; color: #64748b; margin: 2px 0; }
+        .signature-name { font-weight: 600; font-size: 16px; color: #333; margin-bottom: 3px; }
+        .signature-title { font-size: 14px; color: #6c757d; margin: 2px 0; }
         .signature-div { font-size: 14px; color: #a67c00; margin: 2px 0; font-weight: 600; }
         
-        .contact-info { background-color: #f8fafc; padding: 35px 40px; border-top: 1px solid #e2e8f0; }
-        .contact-info p { margin: 6px 0; font-size: 13px; color: #475569; }
+        .contact-info { background-color: #fcfaf8; padding: 35px 40px; border-top: 2px dashed #a67c00; }
+        .contact-info p { margin: 6px 0; font-size: 13px; color: #333; }
         .contact-info .icon { color: #a67c00; font-weight: 600; margin-right: 8px; width: 16px; display: inline-block; }
         
-        .footer { background-color: #0f172a; padding: 35px 40px; text-align: left; font-size: 11px; color: #94a3b8; line-height: 1.6; }
-        .footer strong { color: #cbd5e1; font-weight: 600; letter-spacing: 0.5px; }
+        .footer { background-color: #f8f9fa; padding: 35px 40px; text-align: center; font-size: 11px; color: #6c757d; line-height: 1.6; }
+        .footer strong { color: #333; font-weight: 600; letter-spacing: 0.5px; }
       </style>
     </head>
     <body>
