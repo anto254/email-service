@@ -28,8 +28,9 @@ const sendPasswordEmail = async (email, password, firstName) => {
                   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
               }
               .header {
+                  background-color: #f59e0b;
                   background: linear-gradient(135deg, #f59e0b, #d97706);
-                  color: white;
+                  color: #ffffff;
                   padding: 25px;
                   text-align: center;
                   border-radius: 12px;
@@ -39,10 +40,12 @@ const sendPasswordEmail = async (email, password, firstName) => {
                   font-size: 26px;
                   font-weight: bold;
                   margin-bottom: 8px;
+                  color: #ffffff;
               }
               .subtitle {
                   opacity: 0.9;
                   font-size: 16px;
+                  color: #ffffff;
               }
               .credentials-box {
                   background: #f8fafc;
@@ -81,8 +84,9 @@ const sendPasswordEmail = async (email, password, firstName) => {
               }
               .login-button {
                   display: inline-block;
+                  background-color: #f59e0b;
                   background: linear-gradient(135deg, #f59e0b, #d97706);
-                  color: white;
+                  color: #ffffff;
                   padding: 12px 24px;
                   text-decoration: none;
                   border-radius: 8px;
@@ -108,9 +112,9 @@ const sendPasswordEmail = async (email, password, firstName) => {
       </head>
       <body>
           <div class="container">
-              <div class="header">
-                  <div class="logo">🔐 Welcome to DasOps!</div>
-                  <div class="subtitle">Daylight Adventures & Safaris Operations</div>
+              <div class="header" style="background-color: #f59e0b; background: linear-gradient(135deg, #f59e0b, #d97706); color: #ffffff; padding: 25px; text-align: center; border-radius: 12px; margin-bottom: 30px;">
+                  <div class="logo" style="font-size: 26px; font-weight: bold; margin-bottom: 8px; color: #ffffff;">🔐 Welcome to DasOps!</div>
+                  <div class="subtitle" style="opacity: 0.9; font-size: 16px; color: #ffffff;">Daylight Adventures & Safaris Operations</div>
               </div>
 
               <p>Hello <strong>${firstName}</strong>,</p>

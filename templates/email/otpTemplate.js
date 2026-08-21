@@ -46,6 +46,7 @@ const generateOtpEmail = (otpCode, options = {}) => {
           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .header {
+          background-color: #a67c00;
           background: linear-gradient(135deg, #a67c00 0%, #d4a373 100%);
           color: #ffffff;
           padding: 30px 20px;
@@ -54,6 +55,7 @@ const generateOtpEmail = (otpCode, options = {}) => {
         .header h1 {
           margin: 0;
           font-size: 24px;
+          color: #ffffff;
         }
         .content {
           padding: 40px 30px;
@@ -95,8 +97,8 @@ const generateOtpEmail = (otpCode, options = {}) => {
     </head>
     <body>
       <div class="container">
-        <div class="header">
-          <h1>${businessName}</h1>
+        <div class="header" style="background-color: #a67c00; background: linear-gradient(135deg, #a67c00 0%, #d4a373 100%); color: #ffffff; padding: 30px 20px; text-align: center;">
+          <h1 style="margin: 0; font-size: 24px; color: #ffffff;">${businessName}</h1>
         </div>
         <div class="content">
           <h2>Your Verification Code</h2>

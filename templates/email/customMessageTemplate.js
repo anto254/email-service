@@ -44,9 +44,9 @@ const generateCustomMessageEmail = (options = {}) => {
     </head>
     <body>
       <div class="container">
-        <div class="header">
-          <h1>${businessName}</h1>
-          <h2>Private Banking | Wealth Management<br>UAE</h2>
+        <div class="header" style="background-color: #0f172a; color: #d4a373; padding: 35px 40px; text-align: left; border-bottom: 4px solid #a67c00;">
+          <h1 style="margin: 0; font-size: 26px; color: #ffffff; font-weight: 500; letter-spacing: 0.5px;">${businessName}</h1>
+          <h2 style="margin: 12px 0 0 0; font-size: 13px; font-weight: 600; color: #d4a373; letter-spacing: 2.5px; text-transform: uppercase;">Private Banking | Wealth Management<br>UAE</h2>
         </div>
         
         <div class="content">

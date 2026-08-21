@@ -17,8 +17,8 @@ const generateAccountActivatedEmail = (options = {}) => {
       <style>
         body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f4f4; }
         .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .header { background: linear-gradient(135deg, #a67c00 0%, #d4a373 100%); color: #ffffff; padding: 30px 20px; text-align: center; }
-        .header h1 { margin: 0; font-size: 24px; }
+        .header { background-color: #a67c00; background: linear-gradient(135deg, #a67c00 0%, #d4a373 100%); color: #ffffff; padding: 30px 20px; text-align: center; }
+        .header h1 { margin: 0; font-size: 24px; color: #ffffff; }
         .content { padding: 40px 30px; }
         .welcome-box { background-color: #fcfaf8; border: 2px dashed #a67c00; border-radius: 8px; padding: 20px; text-align: center; margin: 30px 0; }
         .welcome-value { font-size: 24px; font-weight: bold; color: #8a2208; margin: 10px 0; }
@@ -32,8 +32,8 @@ const generateAccountActivatedEmail = (options = {}) => {
     </head>
     <body>
       <div class="container">
-        <div class="header">
-          <h1>${businessName}</h1>
+        <div class="header" style="background-color: #a67c00; background: linear-gradient(135deg, #a67c00 0%, #d4a373 100%); color: #ffffff; padding: 30px 20px; text-align: center;">
+          <h1 style="margin: 0; font-size: 24px; color: #ffffff;">${businessName}</h1>
         </div>
         <div class="content">
           <h2>Account Successfully Activated!</h2>

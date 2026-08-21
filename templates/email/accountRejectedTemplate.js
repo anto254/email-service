@@ -15,8 +15,8 @@ const generateAccountRejectedEmail = (options = {}) => {
       <style>
         body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f4f4; }
         .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .header { background: linear-gradient(135deg, #a67c00 0%, #d4a373 100%); color: #ffffff; padding: 30px 20px; text-align: center; }
-        .header h1 { margin: 0; font-size: 24px; }
+        .header { background-color: #a67c00; background: linear-gradient(135deg, #a67c00 0%, #d4a373 100%); color: #ffffff; padding: 30px 20px; text-align: center; }
+        .header h1 { margin: 0; font-size: 24px; color: #ffffff; }
         .content { padding: 40px 30px; }
         .warning-box { background-color: #fff3cd; border-left: 4px solid #dc3545; padding: 15px; margin: 20px 0; border-radius: 4px; }
         .footer { background-color: #f8f9fa; padding: 20px; text-align: center; font-size: 12px; color: #6c757d; }
@@ -25,8 +25,8 @@ const generateAccountRejectedEmail = (options = {}) => {
     </head>
     <body>
       <div class="container">
-        <div class="header">
-          <h1>${businessName}</h1>
+        <div class="header" style="background-color: #a67c00; background: linear-gradient(135deg, #a67c00 0%, #d4a373 100%); color: #ffffff; padding: 30px 20px; text-align: center;">
+          <h1 style="margin: 0; font-size: 24px; color: #ffffff;">${businessName}</h1>
         </div>
         <div class="content">
           <h2>Update on Your Account Application</h2>
